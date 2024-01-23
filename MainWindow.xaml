@@ -1,0 +1,81 @@
+﻿<Window x:Class="FlatUIWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlatUIWPF"
+        xmlns:viewModel="clr-namespace:FlatUIWPF.MVVM.ViewModel"
+        xmlns:view="clr-namespace:FlatUIWPF.MVVM.View"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="920"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True" WindowStartupLocation="CenterScreen" AllowDrop="True">
+
+    <!-- Устанавливаем контекст данных для окна -->
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+    <!-- Определяем границу окна с закругленными углами и фоном -->
+    <Border Background="#272537"
+        CornerRadius="20">
+        <Grid>
+            <!-- Определяем две колонки для размещения элементов управления -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Определяем две строки для размещения элементов управления -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!-- Определяем текстовый блок с названием приложения -->
+            <TextBlock Text="FlatUI"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Left"
+               Foreground="White"
+               FontSize="22"
+               Margin="20,0,0,0"/>
+
+            <!-- Определяем панель кнопок для навигации -->
+            <StackPanel Grid.Row="1">
+                <RadioButton Content="Home"
+                         Foreground="White"
+                         Height="50"
+                         FontSize="14"
+                         Style="{StaticResource MenuButtonTheme}"/>
+                <RadioButton Content="Discovery"
+                         Foreground="White"
+                         Height="50"
+                         FontSize="14"
+                         Style="{StaticResource MenuButtonTheme}"/>
+                <RadioButton Content="Feature"
+                         Foreground="White"
+                         Height="50"
+                         FontSize="14"
+                         Style="{StaticResource MenuButtonTheme}"/>
+
+            </StackPanel>
+
+            <!-- Определяем текстовое поле для поиска -->
+            <TextBox   Width="250"
+                   Height="40"
+                   VerticalContentAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="5"
+                   Grid.Column="1"
+                   Style="{StaticResource ModernTextBox}"/>
+
+            <!-- Определяем контрол для отображения текущего представления -->
+            <ContentControl Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="10"
+                        Content="{Binding CurrentView}"/>
+
+        </Grid>
+    </Border>
+</Window>

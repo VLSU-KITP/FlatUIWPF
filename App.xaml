@@ -1,0 +1,22 @@
+﻿<Application x:Class="FlatUIWPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:FlatUIWPF"
+             xmlns:viewModel="clr-namespace:FlatUIWPF.MVVM.ViewModel"
+             xmlns:view="clr-namespace:FlatUIWPF.MVVM.View"
+             StartupUri="MainWindow.xaml">
+    <!-- Определяем ресурсы приложения -->
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Объединяем словари ресурсов -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ToolboxTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <!-- Определяем шаблон данных для HomeViewModel -->
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                <view:MainView/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
